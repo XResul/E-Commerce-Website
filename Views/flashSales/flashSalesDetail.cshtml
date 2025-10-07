@@ -1,0 +1,112 @@
+﻿@model haliWebProje.Models.flashSalesViewModel
+@{
+    ViewBag.Title = "flashSalesDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    #product-detail-container {
+        font-family: Arial, sans-serif;
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        position: relative;
+    }
+
+        #product-detail-container img {
+            width: 100%;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        #product-detail-container .discount-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e60023;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 3px;
+            z-index: 2;
+            /*display: none;*/
+        }
+
+        #product-detail-container h1 {
+            font-size: 20px;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        #product-detail-container p {
+            font-size: 16px;
+            line-height: 1.4;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        #product-detail-container .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e60023;
+            margin-bottom: 5px;
+        }
+
+        #product-detail-container .original-price {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+            margin-bottom: 20px;
+        }
+
+        #product-detail-container a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #e60023;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+            #product-detail-container a:hover {
+                background-color: #b3001b;
+            }
+</style>
+
+
+<div id="product-detail-container">
+
+
+    @*<div class="discount-label">@Model.flashSales_.yuzdelikIndirim</div>*@
+
+    <img src="@Model.flashSales_.ImageURL" alt="Product Name">
+
+    <h1>@Model.flashSales_.flashSalesName</h1>
+
+    <p>@Html.Raw(Model.flashSales_.Decription)</p>
+
+    <p class="original-price">@Model.flashSales_.BeforePrice ₺</p>
+
+    <p class="price">@Model.flashSales_.NowPrice ₺</p>
+
+    <a href="https://www.trendyol.com/your-product-link" target="_blank">Buy on Trendyol</a>
+</div>
+
+@*<script>
+    // Example logic to show/hide discount label based on condition
+    const discountLabel = document.getElementsByClassName('discount-label');
+    let discountValue = null; // Example value, replace with dynamic logic
+
+    if (discountValue) {
+        discountLabel.textContent = `%${discountValue} OFF`;
+        discountLabel.style.display = 'block';
+    } else {
+        discountLabel.style.display = 'none';
+    }
+
+</script>*@

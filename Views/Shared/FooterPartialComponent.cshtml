@@ -1,0 +1,147 @@
+﻿@model haliWebProje.Models.FooterViewModel
+
+
+<br />
+<hr />
+<footer id="footer">
+    <div class="container">
+        <div class="footer-menu-list">
+            <div class="row d-flex flex-wrap justify-content-between">
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-menu">
+                        <h5 class="widget-title">İletişim</h5>
+                        <p>
+                            @Model.contact_.ContactTittle
+                        </p>
+                        <p>
+                            <a href="mailto:@Model.contact_.Email" style=" text-decoration: none;">
+
+                                <i class="fa fa-envelope-o"></i>  @Model.contact_.Email
+                            </a>
+                        </p>
+                        <p>
+                            <a href="Tel:@Model.contact_.Phone" style="text-decoration: none;">
+
+                                <i class="fa fa-phone"></i>  @Model.contact_.Phone
+
+                            </a>
+
+
+
+                        </p>
+                        @foreach (var item in Model.Adresses__)
+                        {
+                            <p>
+
+                                <a href="https://www.google.com/maps?q=@item.Konum" target="_blank"><i class="icon icon-map-pin"></i> @item.Konum</a>
+                            </p>
+                        }
+
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-menu">
+                        <h5 class="widget-title">Site Haritası</h5>
+                        <ul class="menu-list list-unstyled">
+
+                            <li class="menu-item">
+                                <a href="~/Home/index">Ana Sayfa</a>
+                            </li>
+
+
+                            @foreach (var item in Model.Pages__)
+                            {
+                                <li class="menu-item">
+                                    <a href="~/Page/PageDetail/@item.PageID">@item.PageName</a>
+                                </li>
+                            }
+
+
+                            <li class="menu-item">
+                                <a href="~/Contact/index">İletişim</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+
+
+         
+
+
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-menu">
+                        <h5 class="widget-title">Sosyal Medya</h5>
+                        <div class="social-links">
+                            <ul class="d-flex list-unstyled">
+
+                                <li>
+                                    <a href="@Model.social_.Instagram" target="_blank">
+                                        <i class="icon icon-instagram"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Model.social_.Facebook" target="_blank">
+                                        <i class="icon icon-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Model.social_.Twitter" target="_blank">
+                                        <i class="icon icon-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Model.social_.Youtube" target="_blank">
+                                        <i class="icon icon-youtube-play"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="@Model.social_.Linkedin" target="_blank">
+                                        <i class="icon icon-linkedin2"></i>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-menu">
+                        <h5 class="widget-title">Kategoriler</h5>
+
+                        <ul class="menu-list list-unstyled">
+
+                            @foreach (var item in Model.categories__)
+                            {
+                                <li class="menu-item">
+                                    <a href="~/ProductCategory/categoryDetail/@item.ProductCategoryID">@item.ProductCategoryName</a>
+                                </li>
+
+                            }
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <hr>
+</footer>
+
+ 

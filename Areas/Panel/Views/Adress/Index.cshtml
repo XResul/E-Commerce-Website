@@ -1,0 +1,40 @@
+﻿@model IEnumerable<haliEntityLayer.Entity.Adress>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Adresler Sayfası</h2>
+
+<p>
+    <a href="~/Panel/Adress/Create" class="btn btn-primary"><i class="fa fa-plus"></i> Yeni</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Konum)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Konum)
+            </td>
+            <td>
+                <a href="~/Panel/Adress/Edit/@item.Id" class="btn btn-warning"><i class="fa fa-pencil"></i> </a>
+
+                <br />
+                <br />
+                <a href="~/Panel/Adress/Detail/@item.Id" class="btn btn-info"><i class="fa fa-info"></i> </a>
+                <br />
+                <br />
+                <a href="~/Panel/Adress/Delete/@item.Id" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
+            </td>
+        </tr>
+    }
+
+</table>

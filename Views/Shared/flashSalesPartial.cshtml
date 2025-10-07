@@ -1,0 +1,54 @@
+﻿@model haliWebProje.Models.HomeViewModel
+
+
+<section id="flash-sales" class="product-store padding-large">
+
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Flaş Ürünler</h2>
+        </div>
+        <div class="swiper product-swiper flash-sales overflow-hidden">
+
+            <div class="swiper-wrapper">
+
+
+                @foreach (var item in Model.flashSales)
+                {
+
+                    <div class="swiper-slide">
+                        <div class="product-item">
+
+
+                            <a href="~/flashSales/flashSalesDetail/@item.FlashSalesID">
+
+                                <img src="@item.ImageURL" alt="Books" class="product-image">
+
+                            </a>
+                  
+
+
+                            <div class="discount">@item.yuzdelikIndirim</div>
+
+                            <div class="product-detail">
+                                <h3 class="product-title">
+                                    <a href="~/flashSales/Detail/@item.FlashSalesID">@item.flashSalesName</a>
+                                </h3>
+                                <div class="item-price text-primary">
+                                    <del class="prev-price">@item.BeforePrice</del>@item.NowPrice
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                }
+
+
+
+          
+            </div>
+            <div class="swiper-pagination"></div>
+
+        </div>
+    </div>
+</section>

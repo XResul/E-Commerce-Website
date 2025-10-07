@@ -1,0 +1,66 @@
+﻿@model IEnumerable<haliEntityLayer.Entity.bestSellingProductsCategory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+}
+
+<h2>En Çok Satan Ürün Kategori</h2>
+
+<p>
+    <a href="~/Panel/bestSellingProductsCategory/Create" class="btn btn-primary"><i class="fa fa-plus"></i> Yeni</a>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Resim
+        </th>
+
+        <th>
+            Kategori Adı
+        </th>
+
+
+        <th>
+            Durum
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@item.ImageURL" style="max-width:70%;" />
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.bestSellingProductsCategoryName)
+            </td>
+
+            <td>
+                @if (item.IsActive == true)
+                {
+                    <div class="aktif"></div>
+                }
+                else
+                {
+                    <div class="pasif"></div>
+                }
+            </td>
+            <td>
+                <a href="~/Panel/bestSellingProductsCategory/Edit/@item.bestSellingProductsCategoryID" class="btn btn-warning"><i class="fa fa-pencil"></i> </a>
+                <a href="~/Panel/bestSellingProductsCategory/Detail/@item.bestSellingProductsCategoryID" class="btn btn-info"><i class="fa fa-info"></i> </a>
+
+            </td>
+            <td>
+
+                <a href="~/Panel/bestSellingProductsCategory/pasifYap/@item.bestSellingProductsCategoryID" class="btn btn-danger"> Pasif</a>
+
+                <a href="~/Panel/bestSellingProductsCategory/aktifYap/@item.bestSellingProductsCategoryID" class="btn btn-success"> Aktif</a>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,39 @@
+﻿@model haliEntityLayer.Entity.followOurInstagram
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Resim
+        </dt>
+
+        <dd>
+            <img src="@Model.ImageURL" style="max-width:75%;" />
+            <hr />
+        </dd>
+
+        <dt>
+            Link
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.instagramLink)
+            <hr />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="~/Panel/followOurInstagrams/Edit/@Model.followOurInstagramID" class="btn btn-warning"><i class="fa fa-pencil"></i> Düzenle</a>
+</p>
+<hr />
+<p>
+    <a href="~/Panel/followOurInstagrams/index" class="btn btn-default"><i class="fa fa-sign-out"></i> Listeye Dön</a>
+</p>

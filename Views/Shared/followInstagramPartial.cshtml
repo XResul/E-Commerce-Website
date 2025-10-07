@@ -1,0 +1,30 @@
+﻿@model haliWebProje.Models.HomeViewModel
+
+<section id="instagram" class="padding-large">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Instagram'dan bizi takip edin</h2>
+        </div>
+     
+        <div class="row d-flex flex-wrap justify-content-between">
+
+
+            @foreach (var item in Model.followOurInstagrams)
+            {
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <figure class="zoom-effect">
+                        <a href="@item.instagramLink" target="_blank">
+                            <img src="@item.ImageURL" alt="instagram" class="insta-image">
+                            <i class="icon icon-instagram"></i>
+                        </a>
+
+                    </figure>
+                </div>
+            }
+
+
+
+ 
+        </div>
+    </div>
+</section>

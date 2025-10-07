@@ -1,0 +1,96 @@
+﻿@model haliEntityLayer.Entity.Page
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Resim
+        </dt>
+
+        <dd>
+            <img src="@Model.ImageURL" style="max-width:70%;" />
+            <hr />
+        </dd>
+        <dt>
+            Sayfa Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PageName)
+            <hr />
+        </dd>
+
+        <dt>
+            Başlık
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PageTitle)
+            <hr />
+        </dd>
+
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDescription)
+            <hr />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaKey)
+            <hr />
+        </dd>
+
+        <dt>
+            Aktiflik
+        </dt>
+
+        <dd>
+            @if (Model.IsActive == true)
+            {
+                <div class="aktif"></div>
+            }
+            else
+            {
+                <div class="pasif"></div>
+            }
+            <hr />
+        </dd>
+
+        <dt>
+            Açıklama
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="~/Panel/Pages/Edit/@Model.PageID" class="btn btn-warning"><i class="fa fa-pencil"></i> Düzenle</a>
+
+</p>
+<hr />
+<p>
+    <a href="~/Panel/Pages/index" class="btn btn-default"><i class="fa fa-sign-out"></i> Listeye Dön</a>
+
+</p>

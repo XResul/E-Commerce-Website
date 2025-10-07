@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @Html.Action("HeadParital", "LayoutRepository")
+</head>
+ 
+<body>
+    @Html.Action("HeaderPartial", "LayoutRepository")
+
+
+
+    <div class="">
+        @RenderBody()
+    </div>
+
+
+    @Html.Action("FooterPartial", "LayoutRepository")
+
+    @Html.Action("ScriptPartial", "LayoutRepository")
+</body>
+</html>
+@*ender()*@

@@ -1,0 +1,88 @@
+﻿@model haliWebProje.Models.HomeViewModel
+
+
+
+
+
+
+<div id="selling-products" class="product-store bg-light-grey padding-large">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">En Çok Satanlar</h2>
+        </div>
+
+        <!-- Kategoriler Tab'ları -->
+        <ul class="tabs list-unstyled">
+            <li data-tabtarget="all" class="active tab">All</li>
+            @foreach (var category in Model.bestSellingProductsCategories)
+            {
+                <li data-tabtarget="@category.bestSellingProductsCategoryName" class="tab">@category.bestSellingProductsCategoryName</li>
+            }
+        </ul>
+
+        <div class="tab-content">
+            <!-- "All" Tab -->
+            <div id="all" data-tab-content class="active">
+                <div class="row d-flex flex-wrap">
+                    @foreach (var product in Model.bestSellingProducts)
+                    {
+                        <div class="product-item col-lg-3 col-md-6 col-sm-6">
+                            <div class="image-holder">
+
+                                <a href="~/bestSellingProduct/bestSellingProductDetail/@product.bestSellingProductsID">
+                                    <img src="@product.ImageURL" alt="Product Image" class="product-image">
+
+                                </a>
+
+
+                            </div>
+                            <div class="product-detail">
+                                <h3 class="product-title">
+
+                                    <a href="~/bestSellingProduct/Detail/@product.bestSellingProductsID">  @product.bestSellingProductsName </a>
+
+                                </h3>
+                                <div class="item-price text-primary">@product.Price.ToString("C")</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Kategoriye Ait Ürünler -->
+            @foreach (var category in Model.bestSellingProductsCategories)
+            {
+                <div id="@category.bestSellingProductsCategoryName" data-tab-content>
+                    <div class="row d-flex flex-wrap">
+                        @foreach (var product in category.bestSellingProducts.Where(p => p.bestSellingProductsCategoryID == category.bestSellingProductsCategoryID))
+                        {
+                            <div class="product-item col-lg-3 col-md-6 col-sm-6">
+                                <div class="image-holder">
+
+                                    <a href="~/bestSellingProduct/bestSellingProductDetail/@product.bestSellingProductsID">
+
+                                        <img src="@product.ImageURL" alt="Product Image" class="product-image">
+                                    </a>
+
+
+
+                                </div>
+                                <div class="product-detail">
+                                    <h3 class="product-title">
+                                        <a href="~/bestSellingProduct/Detail/@product.bestSellingProductsID"> @product.bestSellingProductsName</a>
+                                    </h3>
+                                    <div class="item-price text-primary">@product.Price.ToString("C")</div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+ 
+
+
+

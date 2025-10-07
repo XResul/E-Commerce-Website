@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "About";
+   
+}
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+
+    <p>Use this area to provide additional information.</p>
+</main>
+
+
+<ul>
+    <li data-targetclass="eleman1" data-id="5">1</li>
+    <li data-targetclass="eleman2">2</li>
+    <li data-targetclass="eleman3">3</li>
+</ul>
+
+
+<div class="tabs1">
+
+    <div class="eleman1">
+        elaman1
+    </div>
+    <div class="eleman2">
+        elaman2
+    </div>
+    <div class="eleman3">
+        elaman3
+    </div>
+
+</div>
+
+<script>
+
+    $(function () {
+
+        $(".tabs1 div").removeClass("activex");
+
+
+        $("ul").on("click","li", function () {
+
+
+
+            const target = $(this).data("targetclass");
+
+            $(".tabs1 div").removeClass("activex");
+
+            $(".tabs1 ." + target).addClass("activex");
+
+        });
+
+
+    })
+
+</script>
+
+
+<style>
+    .tabs1 div {
+        display:none;
+    }
+   
+    .tabs1 div.activex {
+
+        display:block!important;
+    }
+</style>

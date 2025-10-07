@@ -1,0 +1,152 @@
+﻿@model haliWebProje.Models.HeaderViewModel
+
+
+
+<header id="header">
+    <div id="header-wrap">
+
+        <nav class="secondary-nav border-bottom">
+            <div class="container">
+                <div class="row d-flex align-items-center">
+                    <div class="col-md-4 header-contact">
+                        <p>
+                            <strong>
+                                <a href="Tel:@Model.Contact_.Phone">
+                                    @Model.Contact_.Phone
+                                </a>
+                            </strong>
+                        </p>
+                    </div>
+                    <div class="col-md-4 shipping-purchase text-center">
+                        <p>@Model.Contact_.ContactTittle</p>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12 user-items">
+                        <ul class="d-flex justify-content-end list-unstyled">
+
+                            <li>
+                                <a href="@Model.social_.Instagram" target="_blank">
+                                    <i class="icon icon-instagram"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="@Model.social_.Facebook" target="_blank">
+                                    <i class="icon icon-facebook"></i>
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="@Model.social_.Youtube" target="_blank">
+                                    <i class="icon icon-youtube-play"></i>
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="@Model.social_.Twitter" target="_blank">
+                                    <i class="icon icon-twitter"></i>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="@Model.social_.Linkedin" target="_blank">
+                                    <i class="icon icon-linkedin2"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </nav>
+
+
+
+
+
+        <nav class="primary-nav padding-small">
+            <div class="container">
+                <div class="row d-flex align-items-center">
+                    <div class="col-lg-2 col-md-2">
+                        <div class="main-logo">
+                            <a href="~/Home/index">
+                                <img src="~/Template/ultras-1.0.0/images/ozTurkHaliLogoYeni.png" alt="logo">
+                                @*<img src="~/Template/ultras-1.0.0/images/ozTurkHali.png" />*@
+
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-10">
+                        <div class="navbar">
+
+                            <div id="main-nav" class="stellarnav d-flex justify-content-end right">
+                                <ul class="menu-list">
+
+                                  
+
+                                    <li><a href="~/Home/index" class="item-anchor">Ana Sayfa</a></li>
+
+                                    @*<li><a href="about.html" class="item-anchor" data-effect="About">Hakkımızda</a></li>*@
+
+                                    <li class="menu-item has-sub">
+                                        <a href="" class="item-anchor d-flex align-item-center" data-effect="Shop">Kategoriler<i class="icon icon-chevron-down"></i></a>
+                                        <ul class="submenu">
+
+                                            @foreach (var item in Model.categories)
+                                            {
+                                                <li><a href="~/ProductCategory/categoryDetail/@item.ProductCategoryID" class="item-anchor">@item.ProductCategoryName</a></li>
+
+                                            }
+
+
+                                        </ul>
+                                    </li>
+
+
+
+
+
+
+
+
+
+                                    <li class="menu-item has-sub">
+                                        <a href="" class="item-anchor d-flex align-item-center" data-effect="Shop">Kurumsal<i class="icon icon-chevron-down"></i></a>
+                                        <ul class="submenu">
+
+                                            @foreach (var item in Model.Pages)
+                                            {
+                                                <li><a href="~/Page/PageDetail/@item.PageID" class="item-anchor">@item.PageName</a></li>
+
+                                            }
+
+                                        </ul>
+                                    </li>
+
+                                    <li>
+
+                                        <a href="~/Contact/index" class="item-anchor" data-effect="Contact">İletişim</a>
+
+                                    </li>
+
+
+
+
+
+ 
+
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

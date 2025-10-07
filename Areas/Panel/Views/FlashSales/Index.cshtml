@@ -1,0 +1,66 @@
+﻿@model IEnumerable<haliEntityLayer.Entity.flashSales>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Flaş Ürün Listesi</h2>
+
+<p>
+    <a href="~/Panel/FlashSales/Create" class="btn btn-primary"><i class="fa fa-plus"></i> Yeni</a>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Resim
+        </th>
+        <th>
+            Flaş Ürün İsim
+        </th>
+        <th>
+            Önceki Fiyat
+        </th>
+        <th>
+            Şimdiki Fiyat
+        </th>
+
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@item.ImageURL" style="max-width:70%;" />
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.flashSalesName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeforePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NowPrice)
+            </td>
+
+
+
+            <td>
+                <a href="~/Panel/FlashSales/Edit/@item.FlashSalesID" class="btn btn-warning"><i class="fa fa-pencil"></i> </a>
+                <br />
+                <br />
+                <a href="~/Panel/FlashSales/Detail/@item.FlashSalesID" class="btn btn-info"><i class="fa fa-info"></i> </a>
+                <br />
+                <br />
+
+                <a href="~/Panel/FlashSales/Delete/@item.FlashSalesID" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
+            </td>
+        </tr>
+    }
+
+</table>

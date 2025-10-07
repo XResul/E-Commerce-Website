@@ -1,0 +1,168 @@
+﻿@model haliWebProje.Models.ProductCategoryViewModel
+@{
+    ViewBag.Title = "categoryDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+ 
+
+
+<style>
+    #pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+        #pagination a {
+            text-decoration: none;
+            color: #333; /* Sade siyah renk */
+            margin: 0 8px;
+            padding: 10px 18px;
+            border-radius: 50px; /* Yuvarlak köşeler */
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid #ddd; /* Hafif gri sınır */
+            transition: all 0.3s ease;
+        }
+
+            #pagination a:hover {
+                background-color: #f1f1f1; /* Açık gri arka plan */
+                color: #333; /* Siyah metin rengi */
+                transform: scale(1.05); /* Hoverda biraz büyür */
+            }
+
+            #pagination a.active {
+                background-color: #4CAF50; /* Canlı yeşil arka plan */
+                color: white;
+                border-color: #4CAF50; /* Yeşil sınır */
+                cursor: default;
+            }
+
+            #pagination a:disabled {
+                color: #ccc;
+                cursor: not-allowed;
+            }
+
+
+    /* mobilde sıralanma*/
+
+
+
+</style>
+
+
+<div id="selling-products" class="product-store bg-light-grey padding-large">
+    <div class="container">
+        <div class="section-header">
+            <!-- Başlık veya herhangi bir içerik -->
+        </div>
+
+        <div class="tab-content">
+            <div class="row d-flex flex-wrap" id="product-list">
+                @foreach (var item in Model.products__)
+                {
+                    <div class="product-item col-lg-3 col-md-6 col-sm-6">
+                        <div class="image-holder">
+                            <a href="~/Product/ProductDetail/@item.ProductID">
+                                <img src="@item.ImageURL" alt="Product Image" class="product-image">
+                            </a>
+                        </div>
+                        <div class="product-detail">
+                            <h3 class="product-title">
+                                <a href="~/Product/ProductDetail/@item.ProductID">@item.ProductName</a>
+                            </h3>
+                            <div class="item-price text-primary">@item.Price.ToString("C")</div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const products = @Html.Raw(ViewBag.ProductsJson);  // Ürünler verisini alıyoruz
+    const pageSize = 12;  // Her sayfada 12 ürün olacak
+    const totalPages = Math.ceil(products.length / pageSize);  // Toplam sayfa sayısını hesaplıyoruz
+
+    let currentPage = 1;  // Başlangıçta 1. sayfada başlayacağız
+
+    function displayProducts(page) {
+        // Ürünleri sayfaya göre filtrele
+        const startIndex = (page - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
+        const productsToDisplay = products.slice(startIndex, endIndex);
+
+        // HTML içeriklerini güncelle
+        const productList = document.getElementById("product-list");
+        productList.innerHTML = "";  // Önceki ürünleri temizle
+
+        productsToDisplay.forEach(item => {
+            const productItem = document.createElement("div");
+            productItem.classList.add("product-item", "col-lg-3", "col-md-6", "col-sm-6");
+
+            productItem.innerHTML = `
+                <div class="image-holder">
+                    <a href="/Product/ProductDetail/${item.ProductID}">
+                        <img src="${item.ImageURL}" alt="Product Image" class="product-image">
+                    </a>
+                </div>
+                <div class="product-detail">
+                    <h3 class="product-title">
+                        <a href="/Product/ProductDetail/${item.ProductID}">${item.ProductName}</a>
+                    </h3>
+                    <div class="item-price text-primary">${item.Price.toFixed(2)}</div>
+                </div>
+            `;
+
+            productList.appendChild(productItem);
+        });
+
+        // Sayfalama butonlarını güncelle
+        updatePagination(page);
+    }
+
+    function updatePagination(page) {
+        const pagination = document.getElementById("pagination");
+        pagination.innerHTML = "";  // Önceki sayfalama butonlarını temizle
+
+        // Önceki buton
+        if (page > 1) {
+            const prevButton = document.createElement("a");
+            prevButton.href = "#";
+            prevButton.innerText = "Önceki";
+            prevButton.onclick = () => displayProducts(page - 1);
+            pagination.appendChild(prevButton);
+        }
+
+        // Sayfa numaralarını ekle
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement("a");
+            pageButton.href = "#";
+            pageButton.innerText = i;
+            pageButton.onclick = () => displayProducts(i);
+            if (i === page) pageButton.classList.add("active");
+            pagination.appendChild(pageButton);
+        }
+
+        // Sonraki buton
+        if (page < totalPages) {
+            const nextButton = document.createElement("a");
+            nextButton.href = "#";
+            nextButton.innerText = "Sonraki";
+            nextButton.onclick = () => displayProducts(page + 1);
+            pagination.appendChild(nextButton);
+        }
+    }
+
+    // İlk sayfa yükleme
+    displayProducts(currentPage);
+</script>
+
+ 

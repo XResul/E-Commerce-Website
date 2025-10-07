@@ -1,0 +1,25 @@
+﻿@model haliWebProje.Models.HomeViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@* slider Başlangıç *@
+@Html.Partial("SliderPartial", Model.Sliders.ToList())
+@* slider Başlangıç *@
+
+@* slider Başlangıç *@
+@Html.Partial("bestSellingProductPartial", Model)
+@* slider Başlangıç *@
+
+@* Flash Ürünler  Başlangıç *@
+@Html.Partial("flashSalesPartial", Model)
+@* Flash Ürünler  Başlangıç *@
+
+@* myAbouts   Başlangıç *@
+@Html.Partial("myAboutPartial",Model)
+@* myAbouts  Başlangıç *@
+
+@* Instagram Ürünler  Başlangıç *@
+@Html.Partial("followInstagramPartial", Model)
+@* Instagram Ürünler  Başlangıç *@

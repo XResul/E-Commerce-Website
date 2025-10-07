@@ -1,0 +1,44 @@
+﻿@model IEnumerable<haliEntityLayer.Entity.Users>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kullanıcı Sayfası</h2>
+
+<p>
+    <a href="~/Panel/Users/Create" class="btn btn-primary"><i class="fa fa-plus"></i> Yeni</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Kullanıcı Adı
+        </th>
+        <th>
+            Şifre
+        </th>
+ 
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPassword)
+        </td>
+ 
+        <td>
+            <a href="~/Panel/Users/Edit/@item.UserID" class="btn btn-warning"><i class="fa fa-pencil"></i> </a>
+
+            <a href="~/Panel/Users/Detail/@item.UserID" class="btn btn-info"><i class="fa fa-info"></i> </a>
+
+            <a href="~/Panel/Users/Delete/@item.UserID" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
+        </td>
+    </tr>
+}
+
+</table>

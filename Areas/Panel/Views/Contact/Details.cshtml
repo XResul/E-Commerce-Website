@@ -1,0 +1,86 @@
+﻿@model haliEntityLayer.Entity.Contact
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+}
+
+<h2>İletişim Detaylar</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Başlık
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactTittle)
+            <hr />
+        </dd>
+
+        <dt>
+            Telefon
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+            <hr />
+        </dd>
+
+        <dt>
+            Whatsapp
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Whatsapp)
+            <hr />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+            <hr />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+            <hr />
+        </dd>
+
+        <dt>
+            Harita
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Map)
+            <hr />
+        </dd>
+
+        <dt>
+            Açıklama
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.MetaDescription)
+            <hr />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="~/Panel/Contact/Edit/@Model.ContactID" class="btn btn-warning"><i class="fa fa-pencil"></i> Düzenle</a>
+
+</p>
+<hr />
+<p>
+    <a href="~/Panel/Contact/index" class="btn btn-default"><i class="fa fa-sign-out"></i> Listeye Dön</a>
+
+</p>

@@ -1,0 +1,117 @@
+﻿@model haliWebProje.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ 
+
+<section class="contact-information padding-large">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="section-header">
+                    <h2 class="section-title">@Model.contact_.ContactTittle</h2>
+                </div>
+                <div class="contact-detail">
+                    <div class="detail-list">
+                        <p>@Html.Raw(@Model.contact_.MetaDescription)</p>
+                        <ul class="list-unstyled list-icon">
+
+                            <li>
+                                <a href="tel:@Model.contact_.Phone"><i class="icon icon-phone"></i> @Model.contact_.Phone</a>
+                            </li>
+
+                            @* Whastapp konulacak bu kısma *@
+
+                            <li>
+                                <a href="mailto:@Model.contact_.Email"><i class="icon icon-mail"></i> @Model.contact_.Email</a>
+                            </li>
+
+
+                            @foreach (var item in Model.Adresses__)
+                            {
+                                <li>
+                                    @*  <a href="geo:@item.Konum"><i class="icon icon-map-pin"></i> @item.Konum</a>*@
+
+                                    <a href="https://www.google.com/maps?q=@item.Konum" target="_blank"><i class="icon icon-map-pin"></i> @item.Konum</a>
+                                    @* bu sayede google maps e konumu girerek olayı cözüyor *@
+                                </li>
+                            }
+
+
+                        </ul>
+                    </div>
+
+                    <div class="social-links">
+
+                        <h3>Sosyal Medyalar</h3>
+                        <ul class="d-flex list-unstyled">
+
+                            <li><a href="@Model.social_.Instagram" class="icon icon-instagram" target="_blank"></a></li>
+                            <li><a href="@Model.social_.Facebook" class="icon icon-facebook" target="_blank"></a></li>
+                            <li><a href="@Model.social_.Twitter" class="icon icon-twitter" target="_blank"></a></li>
+                            <li><a href="@Model.social_.Youtube" class="icon icon-youtube-play" target="_blank"></a></li>
+                            <li><a href="@Model.social_.Linkedin" class="icon icon-linkedin2" target="_blank"></a></li>
+
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="contact-information">
+                    <div class="section-header">
+                        @*<h2 class="section-title">Send us a message</h2>*@
+                    </div>
+                    <form name="contactform" action="~/Contact/iletisimForm" method="post" class="contact-form">
+                        <div class="form-item">
+                            <input type="text" minlength="2" name="ad" placeholder="Ad Ve Soyad" class="u-full-width bg-light" required>
+                            <input type="text" name="konu" placeholder="konu" class="u-full-width bg-light" required>
+                            <input type="email" name="email" placeholder="E-mail" class="u-full-width bg-light" required>
+                            <textarea class="u-full-width bg-light" name="mesaj" placeholder="Mesaj" style="height: 180px;" required></textarea>
+                        </div>
+                        <label>
+                            <input type="checkbox" required>
+                            <span class="label-body">
+                                I agree all the <a href="#">terms and conditions</a>
+                            </span>
+                        </label>
+                        <button type="submit" name="submit" class="btn btn-dark btn-full btn-medium">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="google-map">
+    <div class="mapouter">
+        <div class="gmap_canvas">
+            <iframe width="100%" height="500" id="gmap_canvas" src="@Model.contact_.Map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            <a href="https://getasearch.com/fmovies"></a>
+            <br>
+            <style>
+                .mapouter {
+                    position: relative;
+                    text-align: right;
+                    height: 500px;
+                    width: 100%;
+                }
+            </style>
+            @*<a href="https://www.embedgooglemap.net">embedgooglemap.net</a>*@
+            <style>
+                .gmap_canvas {
+                    overflow: hidden;
+                    background: none !important;
+                    height: 500px;
+                    width: 100%;
+                }
+            </style>
+        </div>
+    </div>
+</section>
+

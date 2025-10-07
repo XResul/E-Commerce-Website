@@ -1,0 +1,78 @@
+﻿@model haliWebProje.Models.ProductViewModel
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+
+
+
+    #product-detail-container {
+        font-family: Arial, sans-serif;
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+        #product-detail-container img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        #product-detail-container h1 {
+            font-size: 20px;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        #product-detail-container p {
+            font-size: 16px;
+            line-height: 1.4;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        #product-detail-container .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e60023;
+            margin-bottom: 20px;
+        }
+
+        #product-detail-container a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #e60023;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+            #product-detail-container a:hover {
+                background-color: #b3001b;
+            }
+</style>
+
+
+<div class="container">
+
+    <div id="product-detail-container">
+
+        <img src="@Model.product_.ImageURL" alt="Product Name">
+
+        <h1>@Model.product_.ProductName</h1>
+
+        <p>@Html.Raw(@Model.product_.Decription)</p>
+
+        <p class="price">@Model.product_.Price ₺</p>
+
+        <a href="@Model.product_.trendYolLink" target="_blank">Sipariş Et</a>
+    </div>
+
+
+</div>

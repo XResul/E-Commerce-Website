@@ -1,0 +1,93 @@
+﻿@model haliEntityLayer.Entity.bestSellingProducts
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            Resim
+        </dt>
+
+        <dd>
+            <img src="@Model.ImageURL" style="max-width:70%;" />
+            <hr />
+        </dd>
+
+
+
+
+
+        <dt>
+            Ürün İsmi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bestSellingProductsName)
+            <hr />
+        </dd>
+
+        <dt>
+            Fiyat
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+            <hr />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trendYolLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trendYolLink)
+            <hr />
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDescription)
+            <hr />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaKey)
+            <hr />
+        </dd>
+
+        <dt>
+            Açıklama
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Decription)
+            <hr />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="~/Panel/bestSellingProducts/Edit/@Model.bestSellingProductsID" class="btn btn-warning"><i class="fa fa-pencil"></i> Düzenle</a>
+
+</p>
+<hr />
+<p>
+    <a href="~/Panel/bestSellingProducts/index" class="btn btn-default"><i class="fa fa-sign-out"></i> Listeye Dön</a>
+
+</p>

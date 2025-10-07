@@ -1,0 +1,17 @@
+﻿@model haliWebProje.Models.HomeViewModel
+
+
+<section id="quotation" class="align-center padding-large">
+    <div class="inner-content">
+        <h2 class="section-title divider">@Model.myAbout_.Title </h2>
+        <blockquote>
+            <q>
+
+                @Html.Raw(@Model.myAbout_.MetaDescription)
+
+
+            </q>
+
+        </blockquote>
+    </div>
+</section>

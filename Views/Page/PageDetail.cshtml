@@ -1,0 +1,53 @@
+﻿@model haliWebProje.Models.PageViewModel
+@{
+    ViewBag.Title = "PageDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="site-banner jarallax min-height300 padding-large" style="background: url(@Model.Page_.ImageURL) no-repeat;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-title">@Model.Page_.PageName</h1>
+                <div class="breadcrumbs">
+                    <span class="item">
+                        <a href="~/Home/index">Ana Sayfa /</a>
+                    </span>
+                    <span class="item">@Model.Page_.PageName</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="about-us">
+    <div class="container ">
+        <div class="row d-flex align-items-center">
+            <!--<div class="col-lg-6 col-md-12">-->
+                @*<div class="image-holder">
+                    <img src="@Model.Page_.ImageURL" alt="single" class="about-image">
+                </div>*@
+            <!--</div>-->
+            <div class="col-lg-13">
+                <div class="detail">
+                    <div class="display-header">
+                        <h2 class="section-title" style="text-align:center;">@Model.Page_.PageTitle</h2>
+                        <p>
+
+                            @Html.Raw(@Model.Page_.Description)
+                        </p>
+
+                        @*<div class="btn-wrap">
+                                <a href="shop.html" class="btn btn-dark btn-medium d-flex align-items-center" tabindex="0">
+                                    Shop our store<i class="icon icon-arrow-io"></i>
+                                </a>
+                            </div>*@
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

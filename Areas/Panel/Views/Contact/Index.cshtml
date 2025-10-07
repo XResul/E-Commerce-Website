@@ -1,0 +1,70 @@
+﻿@model IEnumerable<haliEntityLayer.Entity.Contact>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Panel/Views/Shared/_Layout.cshtml";
+}
+
+<h2>İletişim Formu</h2>
+
+<p>
+    <a href="~/Panel/Contact/Create" class="btn btn-primary"><i class="fa fa-plus"></i> Yeni</a>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            İletişim Başlığı
+        </th>
+        <th>
+            Telefon
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Whatsapp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adres)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Map)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactTittle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Whatsapp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adres)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Map)
+        </td>*@
+    <td>
+        <a href="~/Panel/Contact/Edit/@item.ContactID" class="btn btn-warning"><i class="fa fa-pencil"></i> </a>
+        <br />
+        <br />
+        <a href="~/Panel/Contact/Details/@item.ContactID" class="btn btn-info"><i class="fa fa-info"></i> </a>
+        <br />
+        <br />
+
+        <a href="~/Panel/Contact/Delete/@item.ContactID" class="btn btn-danger"><i class="fa fa-trash"></i> </a>
+    </td>
+    </tr>
+}
+
+</table>
